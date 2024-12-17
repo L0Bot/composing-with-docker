@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const MessageModel = require("./MessageModel");
 
 process.on("SIGINT", () => {
@@ -14,6 +15,7 @@ process.on("SIGTERM", () => {
 
 (async () => {
   const app = express();
+  app.use(cors());
 
   console.log("Connecting to MongoDB");
   await mongoose.connect("mongodb://mongodb:27017/tom", {
